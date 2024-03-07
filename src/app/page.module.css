@@ -3,3 +3,8 @@
     position: relative;
     left: 0;
 }
+
+.homePageContainer {
+    display: flex;
+    align-items: start;
+}

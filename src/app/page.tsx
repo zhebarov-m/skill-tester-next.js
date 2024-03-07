@@ -12,8 +12,10 @@ export default function Home() {
 
     return (
         <div className={styles.homePage}>
-            <button onClick={handleToogleSidebar}>OPEN</button>
-            <Sidebar collapsed={collapsed}/>
+            <div className={styles.homePageContainer}>
+                <Sidebar collapsed={collapsed}/>
+                <button onClick={handleToogleSidebar}>OPEN</button>
+            </div>
         </div>
     )
 }

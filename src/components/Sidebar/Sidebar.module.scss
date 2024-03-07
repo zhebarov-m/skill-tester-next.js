@@ -9,6 +9,9 @@
 }
 
 .collapsed {
-    position: relative;
-    left: -250px;
+    width: var(--sidebar-width-collapsed);
+}
+
+.list {
+
 }
