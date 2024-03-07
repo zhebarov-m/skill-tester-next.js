@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    justify-content: center;
+    background-color: #252425;
+    color: white;
+    height: var(--header-height);
+    border-bottom: 3px solid #E1B168;
+    color: #E1B168;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 1440px;
+
+        .logo {
+            font-size: 30px;
+        }
+
+        .navList {
+            display: flex;
+            gap: 32px;
+        }
+    }
+}

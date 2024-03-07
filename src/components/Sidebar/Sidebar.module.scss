@@ -1,0 +1,14 @@
+.sidebar {
+    background-color: #252425;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+    position: relative;
+    left: 0;
+
+    transition: all .2s linear;
+}
+
+.collapsed {
+    position: relative;
+    left: -250px;
+}
