@@ -1,54 +1,66 @@
+'use client'
 import styles from './Sidebar.module.scss'
-import {FC} from "react";
+import {useState} from "react";
 
 interface SidebarListType {
-    frontendElementTree: string[],
-    backendElementTree: string[]
+    "Frontend Developer": string[],
+    "Backend Developer": string[]
 }
 
+type tListItems = [string, string[]]
 
 const sidebarListTree: SidebarListType = {
-    frontendElementTree: [
+    "Frontend Developer": [
         'HTML',
         'CSS',
         'JavaScript',
         'TypeScript',
         'React'
     ],
-    backendElementTree: [
+    "Backend Developer": [
         'dwd',
         'dwdwd',
         'dwdwdwd'
     ]
 }
 
-interface SidebarProps {
-    collapsed: boolean
-}
 
-const Sidebar: FC<SidebarProps> = (props) => {
-    const {collapsed} = props
+const Sidebar = () => {
+    const [collapsed, setCollapsed] = useState<boolean>(false)
+    const [toggleState, setToggleState] = useState(1)
+    console.log(toggleState)
 
-    function getTitlesSidebar(listItems: string[]) {
-        return listItems.map(item => (
-            <div>
-                <h1>{item[0]}</h1>
-                <ul>
-                    {/*{item[1].map((value: string, i: number) => <li key={i}>{value}</li>)}*/}
+    const toggleTab = (indexActive: number) => {
+        setToggleState(indexActive)
+    }
+
+    const handleToogleSidebar = () => {
+        setCollapsed(prevState => !prevState)
+    }
+
+    function getItemsSidebar(listItems: tListItems[]) {
+        return listItems.map((item, index) => (
+            <div key={index} className={styles.listTree}>
+                <h1 onClick={() => toggleTab(index + 1)}
+                    className={toggleState === (index + 1) ? `${styles.listTitle} ${styles.activeList}` : styles.listTitle}>{item[0]}</h1>
+                <ul className={toggleState === (index + 1) ? `${styles.list} ${styles.activeListContent}` : styles.list}>
+                    {item[1].map((value: string, i: number) => <li key={i}>{value}</li>)}
                 </ul>
             </div>
         ))
     }
 
-    function getListElementSidebar(listItems: string[]) {
-        return listItems.map(item => <li>{item}</li>)
-    }
 
     return (
-        <div className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
-            <div>
-                {/*{getTitlesSidebar(Object.entries(sidebarListTree))}*/}
-            </div>
+        <div
+            onMouseOver={handleToogleSidebar}
+            onMouseOut={handleToogleSidebar}
+            className={`
+                ${styles.sidebar}
+                ${collapsed ? styles.collapsed : ''}
+            `}>
+            <h1>Skill Tester</h1>
+            {getItemsSidebar(Object.entries(sidebarListTree))}
         </div>
     );
 };

@@ -1,10 +1,15 @@
 .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
     background-color: #252425;
     width: var(--sidebar-width);
-    height: calc(100vh - var(--header-height));
+    height: 90vh;
     position: relative;
-    left: 0;
-
+    left: 30px;
+    border-radius: 20px;
+    cursor: pointer;
     transition: all .2s linear;
 }
 
@@ -12,6 +17,49 @@
     width: var(--sidebar-width-collapsed);
 }
 
-.list {
 
+.listTree {
+    color: white;
+    .listTitle {
+        padding: 6px;
+        font-size: 18px;
+        font-weight: 700;
+        transition: all .2s ease-in-out;
+    }
+
+    .activeList {
+        color: #E1B168;
+        border-right: 2px solid #E1B168;
+
+        &::after {
+            content: '';
+            display: inline-block;
+            width: 2px;
+            height: 100%;
+            background-color: #E1B168;
+        }
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        height: 0;
+        opacity: 0;
+        margin-left: 16px;
+        font-size: 15px;
+        transition: height .3s linear,
+    opacity .1s ease-in;
+
+        li:before {
+            content: '▸';
+        }
+    }
+
+    .activeListContent {
+        height: 120px;
+        opacity: 1;
+        padding: 6px 0;
+    }
 }

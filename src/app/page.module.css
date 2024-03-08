@@ -1,10 +1,13 @@
 .homePage {
-    background-color: #F5F5F5;
-    position: relative;
-    left: 0;
+    background-color: #1A1A1A;
 }
 
 .homePageContainer {
     display: flex;
     align-items: start;
+}
+
+.sidebarCont {
+    padding: 20px 0;
+    width: 360px;
 }
