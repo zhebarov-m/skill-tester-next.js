@@ -1,5 +1,5 @@
 import styles from './page.module.css'
-import Sidebar from "@/components/Sidebar/Sidebar";
+import Sidebar from "@/components/layout-components/Sidebar/Sidebar";
 
 export default function Home() {
 
